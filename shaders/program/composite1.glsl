@@ -337,7 +337,8 @@ void main() {
 			normal,
 			material.f0,
 			material.roughness,
-			material.ssr_multiplier
+			material.ssr_multiplier,
+			material.is_metal
 		);
 
 		if (puddle) {

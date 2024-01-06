@@ -33,7 +33,8 @@ bool get_rain_puddles(
 	inout vec3 normal,
 	inout vec3 f0,
 	inout float roughness,
-	inout float ssr_multiplier
+	inout float ssr_multiplier,
+	inout bool is_metal
 ) {
 	const float puddle_f0                      = 0.02;
 	const float puddle_roughness               = 0.002;
@@ -42,7 +43,7 @@ bool get_rain_puddles(
 
 	if (wetness < 0.0 || biome_may_rain < 0.0) return false;
 
-	float puddle = get_puddle_noise(world_pos, flat_normal, light_levels);
+	float puddle = get_puddle_noise(world_pos, flat_normal, light_levels) * float(!is_metal);
 
 	if (puddle < eps) return false;
 
